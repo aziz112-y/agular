@@ -1,0 +1,53 @@
+<h2>{{etudiant1.name}} {{etudiant1.lastname}}</h2>
+<div> <strong>id:</strong>{{etudiant1.id}}</div>
+<div> <strong>name:</strong>{{etudiant1.name | uppercase}}</div>
+<div> <strong>lastname:</strong>{{etudiant1.lastname |lowercase }}</div>
+<div> <strong>birthday Date:</strong>{{etudiant1.date |date }}</div>
+<table border="1">
+    <tr>
+        <td>id</td>
+        <td>{{etudiant1.id}}</td>
+    </tr>
+    <tr>
+        <td>name</td>
+        <td>{{etudiant1.name}}</td>
+    </tr>
+    <tr>
+        <td>lastname</td>
+        <td>{{etudiant1.lastname}}</td>
+    </tr>
+    <tr>
+        <td>birthday Date </td>
+        <td>{{etudiant1.date | date}}</td>
+    </tr>
+    <tr>
+        <td>Average</td>
+        <td>{{etudiant1.average  | currency}}</td>
+    </tr>
+    <tr>
+        
+    </tr>
+</table>
+<div>
+    <label>
+        <strong>name: </strong> <input [(ngModel)]="etudiant1.name" placeholder="name"/> <br>
+        <strong>lastname: </strong> <input [(ngModel)]="etudiant1.lastname" placeholder="lastname"/> <br>
+        <strong>average: </strong><input [(ngModel)]="etudiant1.average" placeholder="average"/>
+    </label>
+    </div>
+<h2>Liste des Etudiants</h2>
+<ul class="etudiants">
+    <li *ngFor="let etudiant of etudiants_l" [class.selected]="etudiant === selectedEtudiant" (click)="OnSelect(etudiant)">
+        
+        <span class="badge">{{etudiant.id}}</span>-{{etudiant.name}}
+    </li> 
+</ul>
+<div *ngIf="selectedEtudiant">
+    <h2>Info de {{selectedEtudiant.name | uppercase}} </h2> <div> <span>id: </span> {{selectedEtudiant.id}}</div>
+    <div>
+        <label>
+            <strong>name</strong>
+            <input [(ngModel)]="selectedEtudiant.name" placeholder="name">
+        </label>
+    </div>
+</div>
